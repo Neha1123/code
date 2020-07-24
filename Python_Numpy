@@ -1,0 +1,354 @@
+#%%
+
+import numpy as np
+
+#%%
+
+a = np.array
+
+#%%
+
+a = np.array([1,2,3])
+a
+
+#%%
+
+a = np.array([[1,2,3],[3,4,5]])
+a
+
+#%%
+
+a = np.array([1,23,5],complex)
+
+#%%
+
+a
+
+#%%
+
+ar = np.array([[1,2],[3,4],[5,6]])
+a
+print(ar.dim)
+
+#%%
+
+ar = np.array([[1,2],[3,4],[5,6]])
+a
+
+#%%
+
+ar
+
+#%%
+
+np.arange(5)
+
+#%%
+
+ar.reshape(2,3)
+ar
+
+#%%
+
+ar.reshape(3,2)
+ar
+
+#%%
+
+print(ar.ndim)
+
+#%%
+
+a = np.array([[1,2,3]])
+print("each item: ", a.itemsize)
+
+#%%
+
+a = np.array([[1,2,3]])
+print("each item: ", a.dtype)
+
+#%%
+
+print(a.size)
+print(a.shape)
+
+#%%
+
+a = a.reshape(3,1)
+print(a)
+
+#%%
+
+print(0,0)
+
+#%%
+
+print(a[0,0])
+
+#%%
+
+a = np.linspace(5,15,12)
+print(a)
+
+#%%
+
+print(a.max())
+
+#%%
+
+z = np.array([23,45,2],[3,5,9],[21,4,24])
+print(a.max(axis = 0))
+print(a.min(axis = 1))
+
+#%%
+
+z = np.array([[23,45,2],[3,5,9],[21,4,24]])
+print(a.max(axis = 0))
+print(a.min(axis = 1))
+
+#%%
+
+z = np.array([[23,45,2],[3,5,9],[21,4,24]])
+print(a.max(axis = 0))
+
+
+#%%
+
+print(np.sqrt(z))
+
+#%%
+
+print(np.std(z))
+
+#%%
+
+a=np.array([[1,2,3],[5,6,7]])
+b=np.array([[1,5,8],[0,9,8]])
+print(np.vstack((a,b)))
+
+#%%
+
+print(np.hstack((a,b)))
+
+#%%
+
+d = np.dtype(np.int32)
+print(d)
+
+#%%
+
+import numpy as np
+d = np.dtype(np.int32)
+print(d)
+
+#%%
+
+import numpy as np
+d = np.int32(i4)
+print(d)
+
+#%%
+
+import numpy as np
+d = np.int32()
+print(d)
+
+#%%
+
+d = np.dtype([('salary', np.float)])
+print(d)
+
+#%%
+
+d = np.dtype([('salary', np.float)])
+ar = np.array([(10000.12,), (200000.50,)], dtype=d)
+print(ar['salary'])
+print(d)
+
+#%%
+
+ar = np.empty((3,2), dtype = int)
+print(ar)
+
+#%%
+
+a = np.zeroes((2,3), dtype=int)
+print(a)
+
+#%%
+
+a = np.zeros((2,3), dtype=int)
+print(a)
+
+#%%
+
+b = np.ones((3,3), dtype=int)
+print(b)
+
+#%%
+
+l = [1,2,3,4,5]
+b = np.array(l)
+print(type(b))
+print(b)
+
+#%%
+
+l = (1,2,3,4,5)
+b = np.array(l)
+print(type(b))
+print(b)
+ll = [[1,2,3,4,5],[3,4]]
+c = np.array(ll)
+print(type(c))
+print(c)
+
+#%%
+
+m = 'hello world'
+print(type(m))
+a = np.frombuffer(m, dtype="S1")
+print(a)
+print(type(a))
+
+#%%
+
+list = [1,2,3]
+it = iter(list)
+x = np.fromiter(it, dtype=float)
+print(x)
+print(type(x))
+
+#%%
+
+ar = np.arange(0,10,2,float)
+print(ar)
+
+#%%
+
+ar = np.linspace(10,20,5, endpoint = False)
+print(ar)
+
+#%%
+
+arr = np.logspace(10, 20, num = 5,base = 2, endpoint = True)  
+print(arr)  
+
+#%%
+
+import numpy as np
+a = np.array([[1,2,3],[2,34,4],[8,7,6]])
+print(a)
+for x in np.nditer(a):
+    print(x, end=' ')
+
+#%%
+
+import numpy as np
+a = np.array([[1,2,3],[2,34,4],[8,7,6]])
+print(a)
+at = a.T
+print(at)
+for x in np.nditer(at):
+    print(x, end=' ')
+
+#%%
+
+import numpy as np
+a = np.array([[1,2,3],[2,34,4],[8,7,6]])
+print(a)
+at = a.T
+print(at)
+for x in np.nditer(at):
+    print(x, end=' ')
+    
+print("\n")
+print("Iterating over C style order:")
+c=at.copy(order='C')
+for x in np.nditer(c):
+    print(x, end=' ')
+
+print("\n")
+print("2nd way Iterating over C style order:")
+for x in np.nditer(at, order='C'):
+    print(x, end=' ')
+    
+print("\n")
+print("Iterating over Fstyle order: ")
+f = at.copy(order='F')
+for x in np.nditer(f):
+    print(x, end=' ')
+
+#%%
+
+a = np.array([[1,2,3],[2,34,4],[8,7,6]])
+print(a)
+print("Iterating over modified array: ")
+for x in np.nditer(a, op_flags = ['readwrite']):
+    x[...] = 3*x
+    print(x, end=' ')
+
+#%%
+
+import numpy as np
+a=20
+b=12
+print("Bitwise and: ", np.bitwise_and(a,b))
+print("Bitwise or: ", np.bitwise_or(a,b))
+ar = np.array([a], dtype=np.uint8)
+print("Bitwise invert: ", np.invert(ar))
+print("Binary representation of inverted: ",np.binary_repr(235,8))
+print("Left-shift: ", np.left_shift(a,3))
+print("Right-shift: ", np.right_shift(a,3))
+
+#%%
+
+import numpy as np
+print("String operations")
+print("concatenation: ", np.char.add(['welcome ','hi '],['hello','everyone']))
+print("multiply: ", np.char.multiply('hello', 3))
+print("center: ", np.char.center("Jupyter notebook",20,'*'))
+print("Capitalize: ", np.char.capitalize("welcome here"))
+print("Title: ", np.char.title("welcome to jupyter"))
+print("Lower: ", np.char.lower("WELCOME To Notebook"))
+print("Split: ", np.char.split("welcome to jupyter"))
+print("Splitlines: ", np.char.splitlines("welcome \n to \n jupyter"))
+print("Strip: ", np.char.strip("     welcome to javatpoint     "))
+print("Join: ", np.char.join(':','h&m'))
+str="welcome to javatpoint"
+print("Replace: ", np.char.replace(str, " to " , "***"))
+enc = np.char.encode("welcome to javatpoint",'cp500')
+dec = np.char.decode(enc, 'cp500')
+print("Encode: ", enc)
+print("Decode: ", dec)
+
+
+#%%
+
+import numpy as np
+a = np.array([12.23451,34.73562])
+print(np.floor(a))
+print(np.ceil(a))
+print("Rounding of to 2 decimals: ", np.around(a,2))
+print(np.around(a,-1))
+
+print("\n")
+print("Trignometric functions ")
+b = np.array([0, 30, 60, 90, 120, 150, 180])
+print("Sin value of the angles: ", np.sin(b*np.pi/180))
+print("Sin value of the angles: ", np.cos(b*np.pi/180))
+print("Sin value of the angles: ", np.tan(b*np.pi/180))
+
+print("\n")
+print("Angles")
+sin = np.sin(b*np.pi/180)
+sdeg = np.arcsin(sin)
+print("Inverse of Sin: ", np.arcsin(sin))
+cos = np.cos(b*np.pi/180)
+print("Inverse of Cos: ", np.arccos(cos))
+tan = np.tan(b*np.pi/180)
+print("Inverse of Tan: ", np.arctan(sin))
+
+#%%
+
+
